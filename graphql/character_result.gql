@@ -1,0 +1,22 @@
+query personList($page: Int!) {
+    characters(page: $page) {
+        info {
+            next
+        }
+        results {
+            id
+            name
+            status
+            species
+            gender
+            type
+            image
+            origin{
+                name
+            }
+            location{
+                name
+            }
+        }
+    }
+}
