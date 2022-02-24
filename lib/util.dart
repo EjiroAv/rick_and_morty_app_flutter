@@ -20,17 +20,17 @@ Future<Tuple2<List<Character>, int>> loadPersonList(int page) async {
 
   List<Character> results = [];
   for (final item in response.data['data']['characters']['results']) {
-    Character person = Character();
-    person.id = item['id'];
-    person.name = item['name'];
-    person.status = item['status'];
-    person.species =item['species'];
-    person.gender = item['gender'];
-    person.type = item ['type'];
-    person.origin = item['origin']['name'];
-    person.location = item['location']['name'];
-    person.image = item['image'];
-    results.add(person);
+    Character character = Character();
+    character.id = item['id'];
+    character.name = item['name'];
+    character.status = item['status'];
+    character.species =item['species'];
+    character.gender = item['gender'];
+    character.type = item ['type'];
+    character.origin = item['origin']['name'];
+    character.location = item['location']['name'];
+    character.image = item['image'];
+    results.add(character);
   }
 
   return Tuple2(

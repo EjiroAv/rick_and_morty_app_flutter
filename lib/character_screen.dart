@@ -105,7 +105,7 @@ class _State extends State<CharacterScreen> {
           ],
         ),
         leading: CircleAvatar(
-          maxRadius: getScreenHeight(context)/kCircleAvatarMinRadius,
+          maxRadius:MediaQuery.of(context).orientation == Orientation.portrait ? getScreenHeight(context)/kCircleAvatarMinRadius : getScreenWidth(context)/kCircleAvatarMinRadius,
           backgroundImage: NetworkImage(person.image),
         ),
       );
