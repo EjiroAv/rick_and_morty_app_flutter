@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:rick_and_morty_app_flutter/responsive.dart';
 import 'constants.dart';
 import 'util.dart';
@@ -40,6 +41,10 @@ class _State extends State<CharacterScreen> {
     super.initState();
     load();
   }
+  
+
+
+
 
   @override
   Widget build(BuildContext context) => Scaffold(
@@ -61,56 +66,61 @@ class _State extends State<CharacterScreen> {
                   load();
                   return Loader(load: load, loadingError: loadingError);
                 }
-                return showPersonNew(persons[i]);
+                  return showPersonNew(persons[i]);
               },
               separatorBuilder: (context, i) => Divider(),
             ));
 
   Widget showPersonNew(Character person) {
     return ListTile(
-        title: Text(
-          person.name,
-          style: const TextStyle(fontSize: kNameTextFontSize),
-        ),
-        subtitle:Column(
-          children: [
-            CharacterInfo(
-                title: 'Status: ',
-                information: person.status.toUpperCase(),
-                color: person.status == 'Dead'
-                    ? Colors.red
-                    : person.status == 'unknown'
-                        ? Colors.orange
-                        : ThemeColors.primary),
-            CharacterInfo(
-                title: 'Species: ',
-                information: person.species,
-                color: ThemeColors.informationTextColor),
-            CharacterInfo(
-                title: 'Gender: ',
-                information: person.gender,
-                color: ThemeColors.informationTextColor),
-            CharacterInfo(
-                title: 'Type: ',
-                information: person.type == '' ? 'original' : person.type,
-                color: ThemeColors.informationTextColor),
-            CharacterInfo(
-                title: 'Origin Location: ',
-                information: person.origin,
-                color: ThemeColors.informationTextColor),
-            CharacterInfo(
-                title: 'Last Know Location: ',
-                information: person.location,
-                color: ThemeColors.informationTextColor),
-          ],
-        ),
-        leading: CircleAvatar(
-          maxRadius:MediaQuery.of(context).orientation == Orientation.portrait ? getScreenHeight(context)/kCircleAvatarMinRadius : getScreenWidth(context)/kCircleAvatarMinRadius,
-          backgroundImage: NetworkImage(person.image),
-        ),
-      );
+      title: Text(
+        person.name,
+        style: TextStyle(fontSize: 12),
+      ),
+      subtitle: Column(
+        children: [
+          CharacterInfo(
+              title: 'Status: ',
+              information: person.status.toUpperCase(),
+              color: person.status == 'Dead'
+                  ? Colors.red
+                  : person.status == 'unknown'
+                  ? Colors.orange
+                  : ThemeColors.primary),
+          CharacterInfo(
+              title: 'Species: ',
+              information: person.species,
+              color: ThemeColors.informationTextColor),
+          CharacterInfo(
+              title: 'Gender: ',
+              information: person.gender,
+              color: ThemeColors.informationTextColor),
+          CharacterInfo(
+              title: 'Type: ',
+              information: person.type == '' ? 'original' : person.type,
+              color: ThemeColors.informationTextColor),
+          CharacterInfo(
+              title: 'Origin: ',
+              information: person.origin,
+              color: ThemeColors.informationTextColor),
+          CharacterInfo(
+              title: 'Location: ',
+              information: person.location,
+              color: ThemeColors.informationTextColor),
+        ],
+      ),
+      leading: CircleAvatar(
+        maxRadius: getScreenHeight(context) / kCircleAvatarMinRadius,
+        //MediaQuery.of(context).orientation == Orientation.portrait ? getScreenHeight(context)/kCircleAvatarMinRadius : getScreenWidth(context)/kCircleAvatarMinRadius,
+        backgroundImage: NetworkImage(person.image),
+      ),
+    );
   }
 }
+
+
+
+
 
 class CharacterInfo extends StatelessWidget {
   String title;
@@ -132,14 +142,14 @@ class CharacterInfo extends StatelessWidget {
       children: [
         Text(
           title,
-          style: const TextStyle(
-            fontSize: kInformationTextFontSize,
+          style:  TextStyle(
+            fontSize: 10,
           ),
         ),
         Text(
           information,
           style: TextStyle(
-            fontSize: kInformationTextFontSize,
+            fontSize: 10,
             color: color,
           ),
         ),
