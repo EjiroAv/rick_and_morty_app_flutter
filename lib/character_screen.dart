@@ -6,7 +6,7 @@ import 'character_model.dart';
 import 'theme.dart';
 
 class CharacterScreen extends StatefulWidget {
-  final title = 'Characters';
+  final title = 'Rick And Morty Characters';
 
   CharacterScreen({Key? key}) : super(key: key);
 
